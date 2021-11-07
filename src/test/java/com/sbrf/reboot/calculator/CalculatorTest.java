@@ -27,6 +27,21 @@ class CalculatorTest {
     }
 
     @Test
+    void getSquare() {
+        assertEquals(256, Calculator.getSquare(16));
+    }
+
+    @Test
+    void getExponentiation() {
+        assertEquals(15625, Calculator.getExponentiation(5, 6));
+    }
+
+    @Test
+    void getPercentage() {
+        assertEquals(11.25, Calculator.getPercentage(9, 80));
+    }
+
+    @Test
     void classHasSevenMethods(){
         assertEquals(7,Calculator.class.getMethods().length-Object.class.getMethods().length);
     }
