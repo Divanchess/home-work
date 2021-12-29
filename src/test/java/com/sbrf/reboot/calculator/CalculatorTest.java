@@ -27,6 +27,13 @@ class CalculatorTest {
     }
 
     @Test
+    void getDivisionZero() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            int result = Calculator.getDivision(12, 0);
+        });
+    }
+
+    @Test
     void getSquare() {
         assertEquals(256, Calculator.getSquare(16));
     }
@@ -39,6 +46,13 @@ class CalculatorTest {
     @Test
     void getPercentage() {
         assertEquals(11.25, Calculator.getPercentage(9, 80));
+    }
+
+    @Test
+    void getPercentageZero() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            double result = Calculator.getPercentage(71, 0);
+        });
     }
 
     @Test
