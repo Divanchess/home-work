@@ -1,10 +1,15 @@
 package com.sbrf.reboot.entity;
+import lombok.RequiredArgsConstructor;
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.ToString;
 
+@RequiredArgsConstructor
+@ToString
 public class Account {
-    private String accountNumber;
 
-    public Account(String accountNumber) {
-        this.accountNumber = accountNumber;
-    }
+    @Getter
+    @NonNull
+    private String accountNumber;
 
 }

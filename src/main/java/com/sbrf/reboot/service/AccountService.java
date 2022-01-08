@@ -2,15 +2,16 @@ package com.sbrf.reboot.service;
 
 import com.sbrf.reboot.entity.Account;
 import com.sbrf.reboot.repository.AccountRepository;
-
 import java.util.Set;
 
-public class AccountService {
-    private AccountRepository accountRepository;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
-    public AccountService(AccountRepository repository) {
-        this.accountRepository = repository;
-    }
+@RequiredArgsConstructor
+public class AccountService {
+
+    @NonNull
+    private AccountRepository accountRepository;
 
     public boolean isAccountExist(long clientId, Account account) {
         Set<Account> accounts = accountRepository.getAllAccountsByClientId(clientId);
