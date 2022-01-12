@@ -1,19 +1,25 @@
 package com.sbrf.reboot.atm.sensors;
 
-public abstract class Sensors {
+public abstract class Sensor {
     protected boolean isSuccess = false;
     public abstract boolean getStatus();
     public abstract void initialize();
     public abstract boolean verify();
 
-    public static class DoorSensor extends Sensors {
+    public static class DoorSensor extends Sensor {
         @Override
         public boolean getStatus(){
             return this.isSuccess;
         }
 
+        @Override
+        public String toString() {
+            return "DoorSensor";
+        }
+
         public void initialize() {
             this.isSuccess = true;
+            System.out.println("Initialization is successful");
         }
 
         public boolean verify() {
@@ -23,14 +29,20 @@ public abstract class Sensors {
         }
     }
 
-    public static class ShockSensor extends Sensors {
+    public static class ShockSensor extends Sensor {
         @Override
         public boolean getStatus(){
             return this.isSuccess;
         }
 
+        @Override
+        public String toString() {
+            return "ShockSensor";
+        }
+
         public void initialize() {
             this.isSuccess = true;
+            System.out.println("Initialization is successful");
         }
 
         public boolean verify() {

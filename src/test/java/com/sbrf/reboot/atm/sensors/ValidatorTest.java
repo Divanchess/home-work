@@ -9,13 +9,19 @@ public class ValidatorTest {
 
     @Test
     void validateTest() {
-        Sensors.DoorSensor doorSensor = new Sensors.DoorSensor();
-        Sensors.ShockSensor shockSensor = new Sensors.ShockSensor();
+        Sensor.DoorSensor doorSensor = new Sensor.DoorSensor();
+        Sensor.ShockSensor shockSensor = new Sensor.ShockSensor();
 
-        Validator<Sensors> validator = new Validator<>(new ArrayList<Sensors>() {{
+        Validator<Sensor> validator = new Validator<>(new ArrayList<Sensor>() {{
             add(doorSensor);
             add(shockSensor);
         }});
+
+        for (Sensor s : validator.getValidateList()) {
+            System.out.println(s +" is active:" + s.getStatus());
+            s.initialize();
+            System.out.println(s +" is active:" + s.getStatus());
+        }
 
         Assertions.assertTrue(validator.validate());
     }

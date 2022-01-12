@@ -13,4 +13,8 @@ public class Validator<T> {
     public boolean validate() {
         return true;
     }
+
+    public List<T> getValidateList() {
+        return this.sensors;
+    }
 }
