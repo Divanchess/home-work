@@ -1,6 +1,6 @@
 package com.sbrf.reboot.repository;
 import java.util.Set;
-import com.sbrf.reboot.entity.Account;
+import com.sbrf.reboot.dto.Account;
 
 /**
  * Интерфейс репозитория Accounts
