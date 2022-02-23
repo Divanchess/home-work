@@ -6,6 +6,7 @@
 
     <groupId>com.sbrf.reboot</groupId>
     <artifactId>home-work</artifactId>
+    <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -31,6 +32,9 @@
         <junit-jupiter.version>5.7.2</junit-jupiter.version>
         <mockito-core.version>3.11.2</mockito-core.version>
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
+        <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
+        <maven-war-plugin.version>2.4</maven-war-plugin.version>
+
     </properties>
 
     <dependencies>
@@ -52,6 +56,11 @@
             <version>${mockito-core.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>${javax.servlet-api.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -61,6 +70,19 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>${maven-war-plugin.version}</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>9.4.43.v20210629</version>
             </plugin>
         </plugins>
     </build>
