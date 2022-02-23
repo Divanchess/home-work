@@ -4,31 +4,27 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.concurrent.atomic.AtomicInteger;
 
-@WebServlet("/ask")
+@WebServlet("/")
 public class MainServlet extends HttpServlet {
+    private AtomicInteger visitCounter = new AtomicInteger(0);
+
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        HttpSession session = request.getSession();
-        Integer visitCounter = (Integer) session.getAttribute("visitCounter");
-        if (visitCounter == null) {
-            visitCounter = 1;
-        } else {
-            visitCounter++;
-        }
-        session.setAttribute("visitCounter", visitCounter);
         String username = request.getParameter("name");
-        response.setContentType("txt/html");
+        response.setContentType("text/html");
         PrintWriter printWriter = response.getWriter();
+        // Avoid favicon.ico request
+        printWriter.println("<link rel=\"icon\" href=\"data:,\">");
         if (username == null) {
-            printWriter.write("Привет, Anonymous");
+            printWriter.println("Привет, Anonymous");
         } else {
-            printWriter.write("Привет, " + username);
+            printWriter.println("Привет, " + username);
         }
-        printWriter.write("Страница была посещена: " + visitCounter + " раз");
+        printWriter.println("Страница была посещена: " + visitCounter.addAndGet(1) + " раз");
         printWriter.close();
     }
 }
