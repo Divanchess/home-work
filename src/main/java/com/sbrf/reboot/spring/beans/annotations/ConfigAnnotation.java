@@ -10,7 +10,7 @@ import org.springframework.context.annotation.PropertySource;
 @Configuration
 public class ConfigAnnotation {
     @Bean(initMethod = "printInitMessage")
-    public AccountAnnotation accountAnnotationConfig(@Qualifier("clientAnnotationConfig") ClientAnnotation client, @Value("${currency}") String currency) {
+    public AccountAnnotation accountAnnotationConfig(ClientAnnotation client, @Value("${currency}") String currency) {
         return new AccountAnnotation("BFLDJFH1458457", currency, client);
     }
 
