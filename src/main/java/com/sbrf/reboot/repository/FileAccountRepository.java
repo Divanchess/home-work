@@ -34,15 +34,15 @@ public class FileAccountRepository implements AccountRepository {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parsed = line.split(";");
-                String parsedAccountNumber = parsed[0];
-                Long parsedClientId = new Long(parsed[1]);
+                String parsedAccountNumber = String.valueOf(parsed[0]);
+                Long parsedClientId = Long.valueOf(parsed[1]);
                 if (parsedClientId == clientId) {
                     accounts.add(new Account(parsedAccountNumber));
                 }
             }
             reader.close();
-        } catch (Exception E) {
-            System.out.println(E);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return accounts;
     }
